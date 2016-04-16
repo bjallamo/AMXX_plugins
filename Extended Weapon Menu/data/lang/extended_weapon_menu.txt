@@ -1,0 +1,55 @@
+[hu]
+EWM_MENU_BACK = Vissza
+EWM_MENU_NEXT = Következő
+EWM_MENU_EXIT = Kilépés
+EWM_AWP_ALLOWFROM = ^3AWP^1-hez szükséges minimum %iv%i játékos.
+EWM_AWP_TOOMANY = Túl sok játékos (%i) vásárolt ^3AWP^1-t a csapatodban.
+EWM_CHOOSED = A(z) ^3%s^1 csomagot választottad.
+
+[en]
+EWM_MENU_BACK = Back
+EWM_MENU_NEXT = Next
+EWM_MENU_EXIT = Exit
+EWM_AWP_ALLOWFROM = ^3AWP^1 is allowed from minimum of %iv%i players.
+EWM_AWP_TOOMANY = Too many players (%i) bought ^3AWP^1 in your team.
+EWM_CHOOSED = You have choosed the ^3%s^1 pack.
+
+[ru]
+EWM_MENU_BACK = Назад
+EWM_MENU_NEXT = Вперед
+EWM_MENU_EXIT = Выход
+EWM_AWP_ALLOWFROM = ^3AWP^1 разрешено, если на сервере минимум ^4%iv%i^1 игрока.
+EWM_AWP_TOOMANY = Ваша команда достикла лимита ^3AWP^1(^4%i^1).
+EWM_CHOOSED = Вы уже выбрали ^3%s^1.
+
+[bp]
+EWM_MENU_BACK = Voltar
+EWM_MENU_NEXT = Proximo
+EWM_MENU_EXIT = Sair
+EWM_AWP_ALLOWFROM = A ^3AWP^1 somente eh permitida com um minimo de %iv%i jogadores.
+EWM_AWP_TOOMANY = Muitos jogadores (%i) ja compraram ^3AWP^1 no seu time.
+EWM_CHOOSED = Voce escolheu o pacote ^3%s^1.
+
+[ro]
+EWM_MENU_BACK = Inapoi
+EWM_MENU_NEXT = Urmatorul
+EWM_MENU_EXIT = Iesire
+EWM_AWP_ALLOWFROM = ^3AWP^1 este permis de la un minimum de %iv%i jucatori.
+EWM_AWP_TOOMANY = Prea multi jucatori (%i) au cumparat ^3AWP^1 in echipa ta.
+EWM_CHOOSED = Ai ales pachetul ^3%s^1.
+
+[it]
+EWM_MENU_BACK = Indietro
+EWM_MENU_NEXT = Avanti
+EWM_MENU_EXIT = Esci
+EWM_AWP_ALLOWFROM = ^3AWP^1 è permesso da un minimo di %iv%i giocatori.
+EWM_AWP_TOOMANY = Troppi giocatori (%i) hanno comprato ^3AWP^1 nella tua squadra.
+EWM_CHOOSED = Hai scelto il pacco ^3%s^1.
+
+[sr]
+EWM_MENU_BACK = Prethodna
+EWM_MENU_NEXT = Sledeca
+EWM_MENU_EXIT = Izadji
+EWM_AWP_ALLOWFROM = ^3AWP^1 je dozvoljen kada igra najmanje %iv%i igraca.
+EWM_AWP_TOOMANY = Previse igraca (%i) je kupilo ^3AWP^1 u tvom timu.
+EWM_CHOOSED = Izabrao si ^3%s^1.
