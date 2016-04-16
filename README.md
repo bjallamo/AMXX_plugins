@@ -1,3 +1,4 @@
 # AMXX_plugins
-# My little plugins here. :)
-# HLmod.hu
+My little plugins here. :)
+
+www.HLmod.hu
