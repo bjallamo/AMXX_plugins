@@ -13,29 +13,29 @@ public plugin_init() {
 public plugin_precache() {
 	g_SteamID = TrieCreate();
 
-    new sBuffer[256], sFile[64], sData[2][32], pFile;
+	new sBuffer[256], sFile[64], sData[2][32], pFile;
+
+	get_localinfo("amxx_configsdir", sFile, charsmax(sFile));
+	format(sFile, charsmax(sFile), "%s/unique_connect_sounds.ini", sFile);
+
+	pFile = fopen(sFile, "rt");
  
-    get_localinfo("amxx_configsdir", sFile, charsmax(sFile));
-    format(sFile, charsmax(sFile), "%s/unique_connect_sounds.ini", sFile);
+	if(pFile) {    
+		while(!feof(pFile)) {
+			fgets(pFile, sBuffer, charsmax(sBuffer));
+			trim(sBuffer);
+			if(sBuffer[0] == ';') continue;
+
+			parse(sBuffer, sData[0], charsmax(sData[]), sData[1], charsmax(sData[]));
  
-    pFile = fopen(sFile, "rt");
- 
-    if(pFile) {    
-        while(!feof(pFile)) {
-            fgets(pFile, sBuffer, charsmax(sBuffer));
-            trim(sBuffer);
-            if(sBuffer[0] == ';') continue;
- 
-            parse(sBuffer, sData[0], charsmax(sData[]), sData[1], charsmax(sData[]));
- 
-            if(containi(sData[1], ".mp3") != -1 || containi(sData[1], ".wav") != -1) {
-                precache_sound(sData[1])
-                TrieSetString(g_SteamID, sData[0], sData[1])
-            }
-        }
-        fclose(pFile);
-    }
-    else fprintf(pFile, ";^"STEAM_0:0:12345678^" ^"connectsounds/anybody.mp3^"^n");
+			if(containi(sData[1], ".mp3") != -1 || containi(sData[1], ".wav") != -1) {
+				precache_sound(sData[1])
+				TrieSetString(g_SteamID, sData[0], sData[1])
+			}
+		}
+		fclose(pFile);
+	}
+	else fprintf(pFile, ";^"STEAM_0:0:12345678^" ^"connectsounds/anybody.mp3^"^n");
 }
 
 
