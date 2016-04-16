@@ -16,7 +16,6 @@ new Trie:weaponlist
 
 #define get_weapon_owner(%1)		get_pdata_cbase(%1, m_pPlayer, XO_WEAPON)
 #define get_weapon_id(%1)			get_pdata_int(%1, m_iId, XO_WEAPON)
-#define AllocString(%1) 			engfunc(EngFunc_AllocString,%1)
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
@@ -61,7 +60,7 @@ public ItemDeploy_Post(Ent) {
 		get_weaponname(get_weapon_id(Ent), szWeapon, charsmax(szWeapon));
 		
 		TrieGetString(weaponlist, szWeapon, WeaponPath, charsmax(WeaponPath));
-		set_pev_string(id, pev_viewmodel2, AllocString(WeaponPath));
+		set_pev(id, pev_viewmodel2, WeaponPath);
 	}
 	return HAM_IGNORED;
 }
