@@ -1,4 +1,5 @@
 #include <amxmodx>
+#include <cstrike>
 #include <fakemeta>
 #include <hamsandwich>
 
@@ -7,9 +8,9 @@ new const VERSION[] = "1.0";
 new const AUTHOR[] = "mforce";
 
 
-#define ACCESS_FLAG	ADMIN_KICK
-
 new Trie:weaponlist
+
+#define ACCESS_FLAG	ADMIN_KICK
 
 const m_pPlayer = 41
 const XO_WEAPON = 4
@@ -19,11 +20,11 @@ const XO_WEAPON = 4
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-
-	weaponlist = TrieCreate()
 }
 
 public plugin_precache() {
+	weaponlist = TrieCreate()
+	
 	new sBuffer[256], sFile[64], sData[2][32], pFile;
  
 	get_localinfo("amxx_configsdir", sFile, charsmax(sFile));
@@ -57,7 +58,7 @@ public ItemDeploy_Post(Ent) {
 	new id = get_weapon_owner(Ent)
 	if((id > 0) && (get_user_flags(id) & ACCESS_FLAG)) {
 		new szWeapon[32], WeaponPath[32];
-		get_weaponname(Ent, szWeapon, charsmax(szWeapon));
+		get_weaponname(cs_get_weapon_id(Ent), szWeapon, charsmax(szWeapon));
 		
 		TrieGetString(weaponlist, szWeapon, WeaponPath, charsmax(WeaponPath));
 		set_pev_string(id, pev_viewmodel2, AllocString(WeaponPath));

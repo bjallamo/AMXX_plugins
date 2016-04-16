@@ -8,10 +8,11 @@ new Trie:g_SteamID;
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
-	g_SteamID = TrieCreate();
 }
 
 public plugin_precache() {
+	g_SteamID = TrieCreate();
+
     new sBuffer[256], sFile[64], sData[2][32], pFile;
  
     get_localinfo("amxx_configsdir", sFile, charsmax(sFile));
@@ -34,7 +35,7 @@ public plugin_precache() {
         }
         fclose(pFile);
     }
-    else fprintf(pFile, ";^"STEAM_0:0:12345678^" ^"hangok/valami.mp3^"^n");
+    else fprintf(pFile, ";^"STEAM_0:0:12345678^" ^"connectsounds/anybody.mp3^"^n");
 }
 
 
