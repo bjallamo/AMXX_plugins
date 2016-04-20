@@ -68,7 +68,7 @@ public sayhandler(id) {
 	if(TrieKeyExists(musiclist, message)) {
 		new usrtime = get_user_time(id);
 		
-		if(usrtime > g_iTimeExpired[id]) {
+		if(usrtime >= g_iTimeExpired[id]) {
 			new szSound[64];
 			TrieGetString(musiclist, message, szSound, charsmax(szSound));
 			playsound(szSound);
