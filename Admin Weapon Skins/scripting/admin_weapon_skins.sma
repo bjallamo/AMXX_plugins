@@ -47,7 +47,7 @@ public plugin_precache() {
 		}
 		fclose(pFile);
 	}
-	else fprintf(pFile, ";^"weapon_ak47^" ^"models/adminskins/v_ak47.mdl^"^n");
+	else write_file(sFile, ";^"weapon_ak47^" ^"models/adminskins/v_ak47.mdl^"^n");
 }
 
 public ItemDeploy_Post(Ent) {

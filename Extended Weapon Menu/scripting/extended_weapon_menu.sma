@@ -119,7 +119,7 @@ public plugin_cfg() {
 		}
 		fclose(pFile);
 	}
-	else fprintf(pFile, ";awp_^n;fy_");
+	else write_file(sFile, ";awp_^n;fy_");
 }
 
 public Event_NewRound() {

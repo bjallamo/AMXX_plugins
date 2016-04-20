@@ -35,7 +35,7 @@ public plugin_precache() {
 		}
 		fclose(pFile);
 	}
-	else fprintf(pFile, ";^"STEAM_0:0:12345678^" ^"connectsounds/anybody.mp3^"^n");
+	else write_file(sFile, ";^"STEAM_0:0:12345678^" ^"connectsounds/anybody.mp3^"^n");
 }
 
 
