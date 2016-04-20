@@ -1,0 +1,11 @@
+[hu]
+TO_SWTICH_OFF = A chathangok ki - vagy bekapcsolásához, írd be:
+YOU_HAVE_TO_WAIT = Még várnod kell!t %i !nmásodpercet, mielőtt újra hangot játszanál le.
+SOUNDS_SWITCHED_ON = Bekapcsoltad !na chathangok lejátszását.
+SOUNDS_SWITCHED_OFF = Kikapcsoltad !na chathangok lejátszását.
+
+[en]
+TO_SWTICH_OFF = To switch on or off the funny chat sounds, type:
+YOU_HAVE_TO_WAIT = You have to wait!t %i !nseconds, to play a sound again.
+SOUNDS_SWITCHED_ON = !nYou switched !ton !nthe funny chat sounds.
+SOUNDS_SWITCHED_OFF = !nYou switched !toff !nthe funny chat sounds.
