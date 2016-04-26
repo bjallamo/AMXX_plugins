@@ -61,6 +61,8 @@ public sayhandler(id) {
 				szSaid[a] = '*';
 			
 			replace_all(szMessage, charsmax(szMessage), szCheck, szSaid);
+			#else
+			break;
 			#endif
 		}
 	}
