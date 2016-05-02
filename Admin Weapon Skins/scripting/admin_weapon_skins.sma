@@ -10,12 +10,10 @@ new const AUTHOR[] = "mforce";
 #define ACCESS_FLAG	ADMIN_KICK
 
 const m_pPlayer = 41
-const m_iId = 43
 const XO_WEAPON = 4
 new Trie:weaponlist
 
 #define get_weapon_owner(%1)		get_pdata_cbase(%1, m_pPlayer, XO_WEAPON)
-#define get_weapon_id(%1)			get_pdata_int(%1, m_iId, XO_WEAPON)
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
@@ -57,10 +55,10 @@ public ItemDeploy_Post(Ent) {
 	new id = get_weapon_owner(Ent)
 	if((id > 0) && (get_user_flags(id) & ACCESS_FLAG)) {
 		new szWeapon[32], WeaponPath[32];
-		get_weaponname(get_weapon_id(Ent), szWeapon, charsmax(szWeapon));
+		pev(Ent, pev_classname, szWeapon, charsmax(szWeapon))
 		
-		TrieGetString(weaponlist, szWeapon, WeaponPath, charsmax(WeaponPath));
-		set_pev(id, pev_viewmodel2, WeaponPath);
+		if(TrieGetString(weaponlist, szWeapon, WeaponPath, charsmax(WeaponPath)))
+			set_pev(id, pev_viewmodel2, WeaponPath);
 	}
 	return HAM_IGNORED;
 }
