@@ -73,16 +73,20 @@ public sayhandler(id) {
 	for(new i; i<g_aSize; i++) {
 		ArrayGetString(musicname, i, sSoundName, charsmax(sSoundName));
 		if(equali(message, sSoundName)) {
-			new usrtime = get_user_time(id);
-			
-			if(usrtime >= g_iTimeExpired[id]) {
-				playsound(i);
-				g_iTimeExpired[id] = (usrtime + TIME_BETWEEN_SOUNDS);
-			}
-			else
-				ColorChat(id, NORMAL, "^4[%s]^1 %L", PREFIX, LANG_SERVER, "YOU_HAVE_TO_WAIT" , (g_iTimeExpired[id] - usrtime));
+			expirecheck(id, i);
 		}
 	}
+}
+
+expirecheck(id, item) {
+	new usrtime = get_user_time(id);
+		
+	if(usrtime >= g_iTimeExpired[id]) {
+		playsound(item);
+		g_iTimeExpired[id] = (usrtime + TIME_BETWEEN_SOUNDS);
+	}
+	else
+		ColorChat(id, NORMAL, "^4[%s]^1 %L", PREFIX, LANG_SERVER, "YOU_HAVE_TO_WAIT" , (g_iTimeExpired[id] - usrtime));
 }
 
 playsound(item) {
@@ -165,7 +169,7 @@ public musicmenu_h(id, menu, item) {
 		return PLUGIN_HANDLED;
 	}
 	
-	playsound(item);
+	expirecheck(id, item);
 	
 	menu_destroy(menu);
 	return PLUGIN_HANDLED;
