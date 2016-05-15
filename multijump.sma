@@ -1,8 +1,8 @@
 #include <amxmodx>
 #include <fakemeta>
 
-#define REHLDS					// If you are not using REHLDS type // characters before the #.
-#define MAXJUMPS	2			// maximum jumps
+#define REHLDS						// If you are not using REHLDS type // characters before the #.
+#define MAXJUMPS	2
 
 
 #if defined REHLDS
