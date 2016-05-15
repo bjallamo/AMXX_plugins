@@ -21,13 +21,13 @@ public plugin_init() {
 	#if defined REHLDS
 	RegisterHookChain(RG_PlayerBlind, "fwdPlayerBlind");
 	#else
-	register_message(get_user_msgid("ScreenFade"), "mScreenFade");
+	register_event("ScreenFade", "eScreenFade", "be", "4=255", "5=255", "6=255", "7>199")  
 	register_think("grenade", "fwdThinkGrenade");
 	#endif
 }
 
 #if defined REHLDS
-public fwdPlayerBlind(const id, const inflictor, const attacker) {
+public fwdPlayerBlind(id, inflictor, attacker) {
 	if(id == attacker)
 		return HC_CONTINUE;
 	if(get_member(id, m_iTeam) != get_member(attacker, m_iTeam))
@@ -36,19 +36,16 @@ public fwdPlayerBlind(const id, const inflictor, const attacker) {
 	return HC_SUPERCEDE;
 }
 #else
-public mScreenFade(msgId, msgDesc, msgEnt) {
-	if(get_msg_arg_int(4) != 255 || get_msg_arg_int(5) != 255 || get_msg_arg_int(6) != 255 || get_msg_arg_int(7) < 200)
+public eScreenFade(id) {
+	if(!g_iFlasher || id == g_iFlasher)
 		return PLUGIN_CONTINUE;
-	
-	if(!g_iFlasher || msgEnt == g_iFlasher)
-		return PLUGIN_CONTINUE;
-	if(get_user_team(msgEnt) != g_iFlasherTeam)
+	if(get_user_team(id) != g_iFlasherTeam)
 		return PLUGIN_CONTINUE;
 	
 	return PLUGIN_HANDLED;
 }
 
-public fwdThinkGrenade(const iEnt) {
+public fwdThinkGrenade(iEnt) {
 	static sModel[23]; entity_get_string(iEnt, EV_SZ_model, sModel, charsmax(sModel));
 	if(strcmp(sModel, "models/w_flashbang.mdl") == 1)
 		return PLUGIN_CONTINUE;
