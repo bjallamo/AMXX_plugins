@@ -9,7 +9,7 @@
 #include <hamsandwich>
 #endif
 
-new const PLUGIN[] = "No Team Flash"
+new const PLUGIN[] = "Only Headshot"
 new const VERSION[] = "1.0"
 new const AUTHOR[] = "mforce & neygomon"
 
