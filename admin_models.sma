@@ -4,7 +4,7 @@
 
 
 new const PLUGIN[] = "Admin Models";
-new const VERSION[] = "1.0";
+new const VERSION[] = "1.1";
 new const AUTHOR[] = "mforce";
 
 
@@ -32,9 +32,13 @@ public fwPlayerSpawn(id) {
 	if(~get_user_flags(id) & ACCESS_FLAG) return;
 	#endif
 	
+	if(!is_user_alive(id)) {
+		cs_reset_user_model(id);
+		return;
+	}
+	
 	switch(cs_get_user_team(id)) {
 			case CS_TEAM_T: cs_set_user_model(id, T_MODEL);
 			case CS_TEAM_CT: cs_set_user_model(id, CT_MODEL);
-			case default: cs_reset_user_model(id);
 	}
 }
