@@ -5,14 +5,14 @@
 #if defined REHLDS
 #include <reapi>
 #else
-#include <engine>
-new g_iFlasher;
-new g_iFlasherTeam;
+#include <fakemeta>
+#include <hamsandwich>
+new g_FlId;
 #endif
 
 new const PLUGIN[] = "No Team Flash"
-new const VERSION[] = "1.0"
-new const AUTHOR[] = "mforce & neygomon"
+new const VERSION[] = "1.1"
+new const AUTHOR[] = "mforce"
 
 
 public plugin_init() {
@@ -21,43 +21,35 @@ public plugin_init() {
 	#if defined REHLDS
 	RegisterHookChain(RG_PlayerBlind, "fwdPlayerBlind");
 	#else
-	register_event("ScreenFade", "eScreenFade", "be", "4=255", "5=255", "6=255", "7>199")  
-	register_think("grenade", "fwdThinkGrenade");
+	register_message(get_user_msgid("ScreenFade"), "mScreenFade");
+	RegisterHam(Ham_Think, "grenade", "Grenade_Think", .Post = false)
 	#endif
 }
 
 #if defined REHLDS
 public fwdPlayerBlind(id, inflictor, attacker) {
-	if(id == attacker)
-		return HC_CONTINUE;
-	if(get_member(id, m_iTeam) != get_member(attacker, m_iTeam))
+	if(id == attacker || get_member(id, m_iTeam) != get_member(attacker, m_iTeam))
 		return HC_CONTINUE;
 
 	return HC_SUPERCEDE;
 }
 #else
-public eScreenFade(id) {
-	if(!g_iFlasher || id == g_iFlasher)
-		return PLUGIN_CONTINUE;
-	if(get_user_team(id) != g_iFlasherTeam)
+public mScreenFade(iMsgId, iMsgType, iMsgEnt) {
+	if(get_msg_arg_int(4) != 255 || get_msg_arg_int(5) != 255 || get_msg_arg_int(6) != 255 || get_msg_arg_int(7) < 200)
 		return PLUGIN_CONTINUE;
 	
+	if(!g_FlId || iMsgEnt == g_FlId || get_user_team(iMsgEnt) != get_user_team(g_FlId))
+		return PLUGIN_CONTINUE;
+
 	return PLUGIN_HANDLED;
 }
 
-public fwdThinkGrenade(iEnt) {
-	static sModel[23]; entity_get_string(iEnt, EV_SZ_model, sModel, charsmax(sModel));
-	if(strcmp(sModel, "models/w_flashbang.mdl") == 1)
-		return PLUGIN_CONTINUE;
-	if(get_gametime() == entity_get_float(iEnt, EV_FL_dmgtime))
-		return PLUGIN_CONTINUE;
-	static iOwner; iOwner = entity_get_edict(iEnt, EV_ENT_owner);
-	if(!is_user_connected(iOwner))
-		g_iFlasher = g_iFlasherTeam = 0;
-	else {
-		g_iFlasher = iOwner;
-		g_iFlasherTeam = get_user_team(iOwner);
+public Grenade_Think(ent) {
+	static szModel[23]; pev(ent, pev_model, szModel, charsmax(szModel));
+
+	if(equal(szModel, "models/w_flashbang.mdl")) {
+		if(pev(ent, pev_dmgtime) <= get_gametime() && ~pev(ent, pev_effects) & EF_NODRAW)
+			g_FlId = pev(ent, pev_owner);
 	}
-	return PLUGIN_CONTINUE;
 }
 #endif
