@@ -1,6 +1,6 @@
 /*
 		Extended Weapon Menu
-			v1.21 by mforce
+			v1.4 by mforce
 	
 	Changes:
 	
