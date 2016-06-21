@@ -53,3 +53,11 @@ EWM_MENU_EXIT = Izadji
 EWM_AWP_ALLOWFROM = ^3AWP^1 je dozvoljen kada igra najmanje %iv%i igraca.
 EWM_AWP_TOOMANY = Previse igraca (%i) je kupilo ^3AWP^1 u tvom timu.
 EWM_CHOOSED = Izabrao si ^3%s^1.
+
+[ua]
+EWM_MENU_BACK = Назад
+EWM_MENU_NEXT = Вперед
+EWM_MENU_EXIT = Вихід
+EWM_AWP_ALLOWFROM = ^3AWP^1 дозволено якщо на сервері %iv%i гравців.
+EWM_AWP_TOOMANY = Забагато гравців (%i) взяли ^3AWP^1 у вашій команді.
+EWM_CHOOSED = Ви вибрали ^3%s^1.
