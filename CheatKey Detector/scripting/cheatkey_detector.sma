@@ -17,7 +17,7 @@ public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 	
 	register_cvar("cheatkey_detector", VERSION, FCVAR_SERVER | FCVAR_SPONLY);
-	g_pCvars[iKickLimit] = register_cvar("ckd_kicklimit", "3");
+	g_pCvars[iKickLimit] = register_cvar("ckd_kicklimit", "2");
 	g_pCvars[iIsQuit] = register_cvar("ckd_quit", "0");
 	
 	register_clcmd("CKD", "CheatKey_Detected");
