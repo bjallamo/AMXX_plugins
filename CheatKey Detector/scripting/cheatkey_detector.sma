@@ -38,7 +38,7 @@ public plugin_cfg() {
 		if(!szLine[0] || szLine[0] == ';' || szLine[0] == '#') continue;
 		
 		if(parse(szLine, szData, charsmax(szData)))
-			ArrayPushString(g_aCheatKeys, szLine);
+			ArrayPushString(g_aCheatKeys, szData);
 	}
 	fclose(iFilePointer);
 	
