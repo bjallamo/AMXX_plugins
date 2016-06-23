@@ -11,6 +11,7 @@ const MAX_PLAYERS = 32;
 
 enum _:PCVARS{iKickLimit, iIsQuit};
 new g_pCvars[PCVARS], g_iCheatKeysSize, g_iKickLimit[MAX_PLAYERS+1];
+new Array:g_aCheatKeys;
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
