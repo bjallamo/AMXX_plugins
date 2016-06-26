@@ -1,7 +1,17 @@
+/*
+		CheatKey Detector
+		v1.2 by mforce
+	
+	Changes:
+	
+	v1.1 - Removed hardcoded things, added stock for sendcmd, not connected bug fixed.
+	v1.2 - Cvars moved to the file, for settings.
+*/
+
 #include <amxmodx>
 
 new const PLUGIN[] = "CheatKey Detector";
-new const VERSION[] = "1.1";
+new const VERSION[] = "1.2";
 new const AUTHOR[] = "mforce";
 
 
@@ -11,35 +21,47 @@ const MAX_PLAYERS = 32;
 const SVC_DIRECTOR_STUFFTEXT = 10;
 
 enum _:PCVARS{iKickLimit, iIsQuit};
-new g_pCvars[PCVARS], g_iCheatKeysSize, g_iKickLimit[MAX_PLAYERS+1];
+new g_iCvars[PCVARS], g_iCheatKeysSize, g_iKickLimit[MAX_PLAYERS+1];
 new Array:g_aCheatKeys;
 
 public plugin_init() {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 	
 	register_cvar("cheatkey_detector", VERSION, FCVAR_SERVER | FCVAR_SPONLY);
-	g_pCvars[iKickLimit] = register_cvar("ckd_kicklimit", "2");
-	g_pCvars[iIsQuit] = register_cvar("ckd_quit", "1");
-	
 	register_clcmd("CKD", "CheatKey_Detected");
 	g_aCheatKeys = ArrayCreate(32);
 }
 
 public plugin_cfg() {
-	new szLine[32], szData[32], szFileName[128], iFilePointer; 
+	new szLine[64], szFileName[128], iFilePointer; 
 	get_localinfo("amxx_configsdir", szFileName, charsmax(szFileName));
 	add(szFileName, charsmax(szFileName), "/CheatKeys.ini");
 	
 	iFilePointer = fopen(szFileName, "rt");
 	if(!iFilePointer) set_fail_state("Can't read config file for CheatKeys.");
 	
+	new iSection;
+	new szKey[32], szSign[3], szValue[3];
 	while(!feof(iFilePointer)) {
 		fgets(iFilePointer, szLine, charsmax(szLine)); trim(szLine);
-		
 		if(!szLine[0] || szLine[0] == ';' || szLine[0] == '#') continue;
 		
-		if(parse(szLine, szData, charsmax(szData)))
-			ArrayPushString(g_aCheatKeys, szData);
+		if(szLine[0] == '[') {
+			if(equali(szLine, "[settings]")) iSection = 1;
+			else if(equali(szLine, "[keys]")) iSection = 2;
+			else iSection = 0;
+			
+			continue;
+		}
+		
+		if(iSection == 1 && parse(szLine, szKey, charsmax(szKey), szSign, charsmax(szSign), szValue, charsmax(szValue))) {
+			if(equali(szKey, "ckd_kicklimit"))
+				g_iCvars[iKickLimit] = str_to_num(szValue);
+			else if(equali(szKey, "ckd_quit"))
+				g_iCvars[iIsQuit] = str_to_num(szValue);
+		}
+		else if(iSection == 2 && parse(szLine, szKey, charsmax(szKey)))
+			ArrayPushString(g_aCheatKeys, szKey);
 	}
 	fclose(iFilePointer);
 	
@@ -68,13 +90,12 @@ public CheatKey_Detected(id) {
 	
 	log_to_file("CheatKeyLog.log", "^n[DETECTED]: ^"%s^" used key '%s' (IP: '%s', STEAMID: '%s').", szName, szKey, szIP, szSteamId);
 	
-	new iCacheKickLimit = get_pcvar_num(g_pCvars[iKickLimit]);
-	if(iCacheKickLimit > 0) {
-		if(++g_iKickLimit[id] >= iCacheKickLimit) {
-			if(get_pcvar_num(g_pCvars[iIsQuit]) == 1)
+	if(g_iCvars[iKickLimit] > 0) {
+		if(++g_iKickLimit[id] >= g_iCvars[iKickLimit]) {
+			if(g_iCvars[iIsQuit] == 1)
 				SendCmd(id, "quit");
 			else
-				server_cmd("kick #%d ^"Too much CheatKeys pressed.^"");
+				server_cmd("kick #%d ^"Too much CheatKeys pressed.^"", get_user_userid(id));
 		}
 	}
 	
