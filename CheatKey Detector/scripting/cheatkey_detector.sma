@@ -5,7 +5,7 @@
 	Changes:
 	
 	v1.1 - Removed hardcoded things, added stock for sendcmd, not connected bug fixed.
-	v1.2 - Cvars moved to the file, for settings.
+	v1.2 - Cvars moved to the file for settings.
 */
 
 #include <amxmodx>
