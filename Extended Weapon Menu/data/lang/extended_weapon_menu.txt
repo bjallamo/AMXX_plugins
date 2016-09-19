@@ -11,16 +11,16 @@ EWM_MENU_BACK = Back
 EWM_MENU_NEXT = Next
 EWM_MENU_EXIT = Exit
 EWM_AWP_ALLOWFROM = ^3AWP^1 is allowed from minimum of %iv%i players.
-EWM_AWP_TOOMANY = Too many players (%i) bought ^3AWP^1 in your team.
+EWM_AWP_TOOMANY = Too much players (%i) bought ^3AWP^1 in your team.
 EWM_CHOOSED = You have choosed the ^3%s^1 pack.
 
 [ru]
 EWM_MENU_BACK = Назад
-EWM_MENU_NEXT = Вперед
+EWM_MENU_NEXT = Далее
 EWM_MENU_EXIT = Выход
-EWM_AWP_ALLOWFROM = ^3AWP^1 разрешено, если на сервере минимум ^4%iv%i^1 игрока.
-EWM_AWP_TOOMANY = Ваша команда достикла лимита ^3AWP^1(^4%i^1).
-EWM_CHOOSED = Вы уже выбрали ^3%s^1.
+EWM_AWP_ALLOWFROM = ^3AWP^1 разрешено для как минимум %iv%i игроков.
+EWM_AWP_TOOMANY = Слишком много игроков (%i) купили ^3AWP^1 в вашей команде.
+EWM_CHOOSED = Вы выбрали ^3%s^1 пакет.
 
 [bp]
 EWM_MENU_BACK = Voltar
@@ -48,10 +48,10 @@ EWM_CHOOSED = Hai scelto il pacco ^3%s^1.
 
 [sr]
 EWM_MENU_BACK = Prethodna
-EWM_MENU_NEXT = Sledeca
-EWM_MENU_EXIT = Izadji
-EWM_AWP_ALLOWFROM = ^3AWP^1 je dozvoljen kada igra najmanje %iv%i igraca.
-EWM_AWP_TOOMANY = Previse igraca (%i) je kupilo ^3AWP^1 u tvom timu.
+EWM_MENU_NEXT = Sledeća
+EWM_MENU_EXIT = Izađi
+EWM_AWP_ALLOWFROM = ^3AWP^1 je dozvoljen kada igra najmanje %iv%i igrača.
+EWM_AWP_TOOMANY = Previše igrača (%i) je kupilo ^3AWP^1 u tvom timu.
 EWM_CHOOSED = Izabrao si ^3%s^1.
 
 [ua]
@@ -61,3 +61,27 @@ EWM_MENU_EXIT = Вихід
 EWM_AWP_ALLOWFROM = ^3AWP^1 дозволено якщо на сервері %iv%i гравців.
 EWM_AWP_TOOMANY = Забагато гравців (%i) взяли ^3AWP^1 у вашій команді.
 EWM_CHOOSED = Ви вибрали ^3%s^1.
+
+[tr]
+EWM_MENU_BACK = Geri
+EWM_MENU_NEXT = Ileri
+EWM_MENU_EXIT = Cikis
+EWM_AWP_ALLOWFROM = ^3AWP^1 kullanimi minimum %iv%i icin izin verildi.
+EWM_AWP_TOOMANY = Takiminda yeterli sayida oyuncu(%i) ^3AWP^1 satin aldi.
+EWM_CHOOSED = ^3%s^1 paketini sectin.
+
+[nl]
+EWM_MENU_BACK = Terug 
+EWM_MENU_NEXT = Volgende 
+EWM_MENU_EXIT = Menu Verlaten 
+EWM_AWP_ALLOWFROM = ^3AWP^1 is toegelaten vanaf een minimum van %iv%i spelers. 
+EWM_AWP_TOOMANY = Er hebben al te veel spelers (%i) een ^3AWP^1 gekocht in jouw team. 
+EWM_CHOOSED = Je hebt het ^3%s^1 pakket gekozen.
+
+[dk]
+EWM_MENU_BACK = Tilbage
+EWM_MENU_NEXT = Næste
+EWM_MENU_EXIT = Luk
+EWM_AWP_ALLOWFROM = ^3AWP^1 er kun tilladt fra minimum  %iv%i players.
+EWM_AWP_TOOMANY = For mange spillere (%i) købte ^3AWP^1 på dit hold.
+EWM_CHOOSED = Du har valgt ^3%s^1 pakken.
